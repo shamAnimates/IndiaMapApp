@@ -1,0 +1,218 @@
+{
+  "IN-AN": {
+    "name": "Andaman & Nicobar Islands",
+    "capital": "Port Blair",
+    "population": "380,000",
+    "info": "An Indian archipelago in the Bay of Bengal."
+  },
+  "IN-AP": {
+    "name": "Andhra Pradesh",
+    "capital": "Amaravati (de facto), Visakhapatnam (executive)",
+    "population": "53,903,393",
+    "info": "Located on the southeastern coast of India, Andhra Pradesh is known for its rich cultural heritage, Telugu language, Tirupati temple, and growing IT and pharmaceutical industries."
+  },
+  "IN-AR": {
+    "name": "Arunachal Pradesh",
+    "capital": "Itanagar",
+    "population": "1,383,727",
+    "info": "A northeastern state of India, Arunachal Pradesh is known for its mountainous terrain, diverse tribal culture, and scenic beauty. It shares international borders with China, Bhutan, and Myanmar."
+  },
+  "IN-AS": {
+    "name": "Assam",
+    "capital": "Dispur",
+    "population": "36,506,000",
+    "info": "Located in northeastern India, Assam is famous for its tea plantations, silk, and the Brahmaputra River. It has a rich cultural heritage and diverse wildlife, including the one-horned rhinoceros."
+  },
+  "IN-BR": {
+    "name": "Bihar",
+    "capital": "Patna",
+    "population": "124,799,926",
+    "info": "Situated in eastern India, Bihar is known for its historical significance as the birthplace of Buddhism and Jainism. Major ancient universities like Nalanda and Vikramshila were located here."
+  },
+  "IN-CH": {
+    "name": "Chandigarh",
+    "capital": "Chandigarh",
+    "population": "1,158,473",
+    "info": "A union territory and the capital of both Punjab and Haryana, Chandigarh is known for its modern architecture and urban design, planned by the Swiss-French architect Le Corbusier."
+  },
+  "IN-CT": {
+    "name": "Chhattisgarh",
+    "capital": "Raipur",
+    "population": "29,436,231",
+    "info": "Located in central India, Chhattisgarh is rich in minerals and forests. It is known for its tribal culture, waterfalls, ancient temples, and significant contribution to India's power and steel production."
+  },
+  "IN-DD": {
+    "name": "Dadra and Nagar Haveli and Daman and Diu",
+    "capital": "Daman",
+    "population": "586,000",
+    "info": "A union territory formed by the merger of two previous UTs in 2020. Known for its coastal beauty, Portuguese heritage, and serene beaches along the Arabian Sea."
+  },
+  "IN-DL": {
+    "name": "Delhi",
+    "capital": "New Delhi",
+    "population": "32,066,000",
+    "info": "India's national capital territory, Delhi is a vibrant metropolis with a blend of ancient history and modern infrastructure. It is home to key government institutions and historical landmarks like the Red Fort and India Gate."
+  },
+  "IN-GA": {
+    "name": "Goa",
+    "capital": "Panaji",
+    "population": "1,586,250",
+    "info": "India's smallest state by area, Goa is renowned for its beaches, Portuguese colonial heritage, vibrant nightlife, and unique cuisine. It is a major tourist destination on the western coast of India."
+  },
+  "IN-GJ": {
+    "name": "Gujarat",
+    "capital": "Gandhinagar",
+    "population": "70,831,029",
+    "info": "Located on the western coast of India, Gujarat is known for its vibrant culture, business-friendly environment, Gir National Park (home to Asiatic lions), and historic sites like the Rann of Kutch and Somnath Temple."
+  },
+  "IN-HP": {
+    "name": "Himachal Pradesh",
+    "capital": "Shimla (Summer), Dharamshala (Winter)",
+    "population": "7,451,955",
+    "info": "A mountainous state in northern India, Himachal Pradesh is known for its scenic beauty, hill stations like Manali and Shimla, adventure tourism, and Tibetan influence in regions like Dharamshala."
+  },
+  "IN-HR": {
+    "name": "Haryana",
+    "capital": "Chandigarh",
+    "population": "28,204,692",
+    "info": "Located in northern India, Haryana surrounds the national capital Delhi on three sides. It is a leading agricultural and industrial state, known for its rich cultural heritage and sporting achievements."
+  },
+  "IN-JH": {
+    "name": "Jharkhand",
+    "capital": "Ranchi",
+    "population": "38,593,948",
+    "info": "Formed in 2000, Jharkhand is located in eastern India and is rich in mineral resources. It has a significant tribal population and is known for forests, waterfalls, and the industrial city of Jamshedpur."
+  },
+  "IN-JK": {
+    "name": "Jammu and Kashmir",
+    "capital": "Srinagar (Summer), Jammu (Winter)",
+    "population": "13,606,320",
+    "info": "A union territory in northern India, Jammu and Kashmir is known for its breathtaking Himalayan landscapes, Dal Lake, religious shrines, and cultural diversity. It was reorganized into a union territory in 2019."
+  },
+  "IN-KA": {
+    "name": "Karnataka",
+    "capital": "Bengaluru",
+    "population": "68,479,970",
+    "info": "Located in southern India, Karnataka is a major technology hub, home to Bengaluru—India’s Silicon Valley. It also has rich traditions, historical sites like Hampi, and diverse landscapes from beaches to hill stations."
+  },
+  "IN-KL": {
+    "name": "Kerala",
+    "capital": "Thiruvananthapuram",
+    "population": "35,330,888",
+    "info": "Situated on the southwestern coast of India, Kerala is renowned for its backwaters, Ayurveda, literacy rate, and cultural diversity. It’s often referred to as 'God’s Own Country' due to its natural beauty."
+  },
+  "IN-LA": {
+    "name": "Ladakh",
+    "capital": "Leh",
+    "population": "274,000",
+    "info": "Carved out of Jammu and Kashmir in 2019, Ladakh is a union territory known for its dramatic mountain landscapes, Buddhist monasteries, and high-altitude desert. It borders Tibet and is a strategic and cultural region."
+  },
+  "IN-LD": {
+    "name": "Lakshadweep",
+    "capital": "Kavaratti",
+    "population": "64,429",
+    "info": "India’s smallest union territory by population, Lakshadweep is an archipelago of 36 islands in the Arabian Sea. It is known for its coral reefs, lagoons, and marine biodiversity."
+  },
+  "IN-MH": {
+    "name": "Maharashtra",
+    "capital": "Mumbai",
+    "population": "123,144,223",
+    "info": "Located in western India, Maharashtra is the second-most populous state and one of the most industrialized. Mumbai, its capital, is the financial and entertainment capital of India. The state is known for its forts, hill stations, and diverse culture."
+  },
+  "IN-ML": {
+    "name": "Meghalaya",
+    "capital": "Shillong",
+    "population": "3,366,710",
+    "info": "A northeastern state of India, Meghalaya means 'abode of clouds'. It is famous for its high rainfall, living root bridges, lush landscapes, and indigenous Khasi, Garo, and Jaintia cultures."
+  },
+  "IN-MN": {
+    "name": "Manipur",
+    "capital": "Imphal",
+    "population": "3,091,545",
+    "info": "Situated in northeastern India, Manipur is known for its scenic hills, classical dance (Raslila), handlooms, and diverse tribal communities. It shares a border with Myanmar and has strategic cultural and geopolitical significance."
+  },
+  "IN-MP": {
+    "name": "Madhya Pradesh",
+    "capital": "Bhopal",
+    "population": "86,358,977",
+    "info": "Located in the heart of India, Madhya Pradesh is known for its rich history, ancient temples, wildlife sanctuaries like Kanha and Bandhavgarh, and UNESCO World Heritage sites such as Khajuraho and Sanchi."
+  },
+  "IN-MZ": {
+    "name": "Mizoram",
+    "capital": "Aizawl",
+    "population": "1,239,244",
+    "info": "Located in northeastern India, Mizoram is a hilly state known for its vibrant tribal culture, pleasant climate, and forested landscapes. The name means 'land of the Mizos', its largest ethnic group."
+  },
+  "IN-NL": {
+    "name": "Nagaland",
+    "capital": "Kohima",
+    "population": "2,120,000",
+    "info": "Nagaland is a northeastern state known for its diverse tribal communities, festivals like the Hornbill Festival, and rugged hills. It shares a border with Myanmar and has a strong tradition of music and crafts."
+  },
+  "IN-OR": {
+    "name": "Odisha",
+    "capital": "Bhubaneswar",
+    "population": "46,495,053",
+    "info": "Located on the eastern coast of India, Odisha is known for its ancient temples like the Sun Temple at Konark, classical dance forms, tribal cultures, and coastal ecosystems including the Chilika Lake."
+  },
+  "IN-PB": {
+    "name": "Punjab",
+    "capital": "Chandigarh",
+    "population": "30,451,858",
+    "info": "Located in northwestern India, Punjab is known for its fertile agricultural land, vibrant culture, and Sikh heritage. It played a crucial role in India’s independence and the Green Revolution."
+  },
+  "IN-PY": {
+    "name": "Puducherry",
+    "capital": "Puducherry",
+    "population": "1,394,467",
+    "info": "A union territory of India consisting of four small unconnected districts, Puducherry was a former French colony. It is known for its French architecture, serene beaches, and spiritual centers like Auroville and Sri Aurobindo Ashram."
+  },
+  "IN-RJ": {
+    "name": "Rajasthan",
+    "capital": "Jaipur",
+    "population": "81,032,689",
+    "info": "The largest state in India by area, Rajasthan is known for its desert landscape, majestic forts, palaces, and rich cultural heritage. It includes historic cities like Jaipur, Udaipur, Jodhpur, and Jaisalmer."
+  },
+  "IN-SK": {
+    "name": "Sikkim",
+    "capital": "Gangtok",
+    "population": "690,251",
+    "info": "A small Himalayan state in northeastern India, Sikkim is known for its scenic beauty, biodiversity, and Buddhist monasteries. It is home to Kangchenjunga, India’s highest mountain peak."
+  },
+  "IN-TG": {
+    "name": "Telangana",
+    "capital": "Hyderabad",
+    "population": "39,362,732",
+    "info": "Formed in 2014, Telangana is India’s youngest state. Located in southern India, it is known for its rich history, architecture like the Charminar and Golconda Fort, and a growing IT industry centered in Hyderabad."
+  },
+  "IN-TN": {
+    "name": "Tamil Nadu",
+    "capital": "Chennai",
+    "population": "72 million",
+    "info": "Famous for its Dravidian-style Hindu temples."
+  },
+  "IN-TR": {
+    "name": "Tripura",
+    "capital": "Agartala",
+    "population": "4,169,794",
+    "info": "Situated in northeastern India, Tripura is known for its lush green valleys, tribal culture, and historical sites like the Ujjayanta Palace and Neermahal. It shares an extensive border with Bangladesh."
+  },
+  "IN-UP": {
+    "name": "Uttar Pradesh",
+    "capital": "Lucknow",
+    "population": "241,066,874",
+    "info": "India’s most populous state, Uttar Pradesh is located in northern India. It is known for its historical and cultural significance, housing sites like the Taj Mahal, Varanasi, Ayodhya, and major religious and political landmarks."
+  },
+  "IN-UT": {
+    "name": "Uttarakhand",
+    "capital": "Dehradun (Winter), Gairsain (Summer)",
+    "population": "11,090,485",
+    "info": "Nestled in the Himalayas, Uttarakhand is known for its natural beauty, pilgrimage sites like Haridwar and Kedarnath, and adventure tourism. It is often referred to as 'Devbhumi' or 'Land of the Gods'."
+  },
+  "IN-WB": {
+    "name": "West Bengal",
+    "capital": "Kolkata",
+    "population": "99,609,303",
+    "info": "Located in eastern India, West Bengal is known for its literary and artistic heritage, colonial architecture, and cultural icons like Rabindranath Tagore. It is home to the Sundarbans and the bustling city of Kolkata."
+  }
+}
