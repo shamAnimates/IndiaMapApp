@@ -1,33 +1,31 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import IndiaMap from "./components/IndiaMap";
-import StateInfoModal from "./components/StateInfoModal";
 import stateInfo from "./data/stateInfo.json";
 
 export default function App() {
   const [selectedStateId, setSelectedStateId] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
 
   const handleStatePress = (stateId) => {
     if (stateInfo[stateId]) {
       setSelectedStateId(stateId);
-      setModalVisible(true);
     }
-  };
-
-  const handleClose = () => {
-    setModalVisible(false);
-    setSelectedStateId(null);
   };
 
   return (
     <View style={styles.container}>
-      <IndiaMap onStatePress={handleStatePress} />
-      <StateInfoModal
-        visible={modalVisible}
-        onClose={handleClose}
-        stateData={stateInfo[selectedStateId]}
+      <IndiaMap 
+        onStatePress={handleStatePress} 
+        selectedStateId={selectedStateId} 
+        stateInfo={stateInfo}
       />
+      {selectedStateId && (
+        <View style={styles.labelContainer}>
+          <Text style={styles.labelText}>
+            {stateInfo[selectedStateId].name}
+          </Text>
+        </View>
+      )}
     </View>
   );
 }
@@ -35,5 +33,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  labelContainer: {
+    position: 'absolute',
+    bottom: 50,
+    alignSelf: 'center',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    padding: 12,
+    borderRadius: 8,
+  },
+  labelText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });

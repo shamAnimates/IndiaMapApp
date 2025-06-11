@@ -9,9 +9,9 @@ const StateInfoModal = ({ visible, onClose, stateData }) => {
       <View style={styles.modalOverlay}>
         <View style={styles.modalContent}>
           <Text style={styles.title}>{stateData.name}</Text>
-          <Text>Capital: {stateData.capital}</Text>
+          {/* <Text>Capital: {stateData.capital}</Text>
           <Text>Population: {stateData.population}</Text>
-          <Text>{stateData.info}</Text>
+          <Text>{stateData.info}</Text> */}
           <Pressable onPress={onClose} style={styles.button}>
             <Text style={styles.buttonText}>Close</Text>
           </Pressable>
