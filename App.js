@@ -10,6 +10,7 @@ export default function App() {
     position: { x: 0, y: 0 }
   });
 
+<<<<<<< HEAD
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState(null);
   const [selectedGangaStates, setSelectedGangaStates] = useState([]);
@@ -48,6 +49,18 @@ export default function App() {
       }
     } else {
       setFeedback("wrong");
+=======
+  const handleStatePress = (stateId, event) => {
+    if (stateInfo[stateId]) {
+      setSelectedState({
+        id: stateId,
+        name: stateInfo[stateId].name,
+        position: {
+          x: event.nativeEvent.locationX,
+          y: event.nativeEvent.locationY
+        }
+      });
+>>>>>>> 9358fa1fd7129032d7e3efd314d8522935083a51
     }
 
     setTimeout(() => {
@@ -64,6 +77,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
       <IndiaMap
         onStatePress={handleStatePress}
         selectedStateId={selectedState.id}
@@ -83,6 +97,24 @@ export default function App() {
           pointerEvents="none"
         >
           <Text style={styles.labelText}>{selectedState.name}</Text>
+=======
+      <IndiaMap 
+        onStatePress={handleStatePress} 
+        selectedStateId={selectedState.id} 
+        stateInfo={stateInfo}
+      />
+      {selectedState.id && (
+        <View style={[
+          styles.labelContainer,
+          {
+            left: selectedState.position.x - 50, // Adjust based on your label width
+            top: selectedState.position.y - 30   // Adjust based on your label height
+          }
+        ]}>
+          <Text style={styles.labelText}>
+            {selectedState.name}
+          </Text>
+>>>>>>> 9358fa1fd7129032d7e3efd314d8522935083a51
         </View>
       )}
 
@@ -126,6 +158,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+<<<<<<< HEAD
     position: "relative",
     backgroundColor: "#fff"
   },
@@ -137,6 +170,18 @@ const styles = StyleSheet.create({
     minWidth: 100,
     alignItems: "center",
     justifyContent: "center"
+=======
+    position: 'relative' // Needed for absolute positioning of label
+  },
+  labelContainer: {
+    position: 'absolute',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+    padding: 12,
+    borderRadius: 8,
+    minWidth: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+>>>>>>> 9358fa1fd7129032d7e3efd314d8522935083a51
   },
   labelText: {
     color: "#fff",
