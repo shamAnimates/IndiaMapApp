@@ -1,7 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import IndiaMap from "./components/IndiaMap";
 import stateInfo from "./data/stateInfo.json";
+
+const questionTypes = [
+  { type: "gangaFlow", text: "Tap all states through which the Ganga river flows", count: 5 },
+  { type: "region", value: "North", text: "Tap all North states", count: 9 },
+  { type: "region", value: "South", text: "Tap all South states", count: 8 },
+  { type: "region", value: "East", text: "Tap all East states", count: 4 },
+  { type: "region", value: "West", text: "Tap all West states", count: 5 },
+  { type: "region", value: "Central", text: "Tap all Central states", count: 2 },
+  { type: "region", value: "Northeast", text: "Tap all Northeast states", count: 8 }
+];
+
+const shuffleArray = (array) => {
+  return array
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+};
 
 export default function App() {
   const [selectedState, setSelectedState] = useState({
@@ -10,20 +27,32 @@ export default function App() {
     position: { x: 0, y: 0 }
   });
 
-<<<<<<< HEAD
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState(null);
-  const [selectedGangaStates, setSelectedGangaStates] = useState([]);
+  const [selectedStates, setSelectedStates] = useState([]);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [shuffledQuestions, setShuffledQuestions] = useState([]);
 
-  const gangaStates = Object.keys(stateInfo).filter(
-    (id) => stateInfo[id].gangaFlow
-  );
+  useEffect(() => {
+    setShuffledQuestions(shuffleArray(questionTypes));
+  }, []);
+
+  const currentQuestion = shuffledQuestions[questionIndex];
+
+  const getCorrectStates = () => {
+    return Object.keys(stateInfo).filter((id) => {
+      const state = stateInfo[id];
+      if (!state) return false;
+      if (currentQuestion?.type === "gangaFlow") return state.gangaFlow;
+      return state.region === currentQuestion?.value;
+    });
+  };
+
+  const correctStates = getCorrectStates();
 
   const handleStatePress = (stateId, event) => {
     if (!stateInfo[stateId]) return;
-
     const state = stateInfo[stateId];
-    const isGangaState = state.gangaFlow;
 
     setSelectedState({
       id: stateId,
@@ -34,57 +63,60 @@ export default function App() {
       }
     });
 
-    if (isGangaState) {
-      if (!selectedGangaStates.includes(stateId)) {
-        const updatedSelection = [...selectedGangaStates, stateId];
-        setSelectedGangaStates(updatedSelection);
+    const isCorrect =
+      currentQuestion?.type === "gangaFlow"
+        ? state.gangaFlow
+        : state.region === currentQuestion?.value;
+
+    if (isCorrect) {
+      if (!selectedStates.includes(stateId)) {
+        const updated = [...selectedStates, stateId];
+        setSelectedStates(updated);
         setFeedback("correct");
 
-        if (updatedSelection.length === gangaStates.length) {
+        if (updated.length === currentQuestion.count) {
           setScore((prev) => prev + 1);
-          setSelectedGangaStates([]); // reset for next round
+          setSelectedStates([]);
+
+          setTimeout(() => {
+            const nextIndex = questionIndex + 1;
+            if (nextIndex < shuffledQuestions.length) {
+              setQuestionIndex(nextIndex);
+            } else {
+              // Reshuffle and restart if all questions are done
+              setShuffledQuestions(shuffleArray(questionTypes));
+              setQuestionIndex(0);
+            }
+          }, 1000);
         }
       } else {
         setFeedback("already selected");
       }
     } else {
       setFeedback("wrong");
-=======
-  const handleStatePress = (stateId, event) => {
-    if (stateInfo[stateId]) {
-      setSelectedState({
-        id: stateId,
-        name: stateInfo[stateId].name,
-        position: {
-          x: event.nativeEvent.locationX,
-          y: event.nativeEvent.locationY
-        }
-      });
->>>>>>> 9358fa1fd7129032d7e3efd314d8522935083a51
     }
 
     setTimeout(() => {
       setSelectedState({ id: null, name: "", position: { x: 0, y: 0 } });
       setFeedback(null);
-    }, 1500);
+    }, 1000);
   };
 
   const handleReset = () => {
     setScore(0);
-    setSelectedGangaStates([]);
-    setFeedback(null);
+    setSelectedStates([]);
+    setQuestionIndex(0);
+    setShuffledQuestions(shuffleArray(questionTypes));
   };
 
   return (
     <View style={styles.container}>
-<<<<<<< HEAD
       <IndiaMap
         onStatePress={handleStatePress}
         selectedStateId={selectedState.id}
         stateInfo={stateInfo}
       />
 
-      {/* Label */}
       {selectedState.id && (
         <View
           style={[
@@ -97,44 +129,22 @@ export default function App() {
           pointerEvents="none"
         >
           <Text style={styles.labelText}>{selectedState.name}</Text>
-=======
-      <IndiaMap 
-        onStatePress={handleStatePress} 
-        selectedStateId={selectedState.id} 
-        stateInfo={stateInfo}
-      />
-      {selectedState.id && (
-        <View style={[
-          styles.labelContainer,
-          {
-            left: selectedState.position.x - 50, // Adjust based on your label width
-            top: selectedState.position.y - 30   // Adjust based on your label height
-          }
-        ]}>
-          <Text style={styles.labelText}>
-            {selectedState.name}
-          </Text>
->>>>>>> 9358fa1fd7129032d7e3efd314d8522935083a51
         </View>
       )}
 
-      {/* Question */}
       <View style={styles.quizBox} pointerEvents="none">
         <Text style={styles.quizText}>
-          Tap all states through which the Ganga river flows
+          {currentQuestion ? currentQuestion.text : ""}
         </Text>
       </View>
 
-      {/* Score */}
       <View style={styles.scoreBox}>
         <Text style={styles.scoreText}>Score: {score}</Text>
-
-        <Pressable onPress={handleReset} style={styles.resetButton}>
+        <Pressable style={styles.resetButton} onPress={handleReset}>
           <Text style={styles.resetText}>Reset</Text>
         </Pressable>
       </View>
 
-      {/* Feedback */}
       {feedback && (
         <View
           style={[
@@ -158,7 +168,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< HEAD
     position: "relative",
     backgroundColor: "#fff"
   },
@@ -170,18 +179,6 @@ const styles = StyleSheet.create({
     minWidth: 100,
     alignItems: "center",
     justifyContent: "center"
-=======
-    position: 'relative' // Needed for absolute positioning of label
-  },
-  labelContainer: {
-    position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    padding: 12,
-    borderRadius: 8,
-    minWidth: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
->>>>>>> 9358fa1fd7129032d7e3efd314d8522935083a51
   },
   labelText: {
     color: "#fff",
@@ -201,19 +198,17 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   scoreBox: {
-  position: "absolute",
-  top: 80,
-  left: 20,
-  right: 20,
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center"
-},
-
+    position: "absolute",
+    top: 80,
+    left: 20,
+    right: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
   scoreText: {
     fontSize: 16,
-    fontWeight: "bold",
-    marginRight: 10
+    fontWeight: "bold"
   },
   resetButton: {
     backgroundColor: "#007AFF",
