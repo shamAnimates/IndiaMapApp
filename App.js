@@ -3,22 +3,37 @@ import { View, StyleSheet, Text, Pressable } from "react-native";
 import IndiaMap from "./components/IndiaMap";
 import stateInfo from "./data/stateInfo.json";
 
-const questionTypes = [
+// Static question types (multi-answer)
+const baseQuestions = [
   { type: "gangaFlow", text: "Tap all states through which the Ganga river flows", count: 5 },
   { type: "region", value: "North", text: "Tap all North states", count: 9 },
   { type: "region", value: "South", text: "Tap all South states", count: 8 },
   { type: "region", value: "East", text: "Tap all East states", count: 4 },
   { type: "region", value: "West", text: "Tap all West states", count: 5 },
   { type: "region", value: "Central", text: "Tap all Central states", count: 2 },
-  { type: "region", value: "Northeast", text: "Tap all Northeast states", count: 8 }
+  { type: "region", value: "Northeast", text: "Tap all Northeast states", count: 8 },
+  {
+    type: "unionTerritory",
+    text: "Tap on all Union Territories",
+    count: Object.keys(stateInfo).filter((id) => stateInfo[id].isUnionTerritory).length
+  }
 ];
 
-const shuffleArray = (array) => {
-  return array
+
+const getCapitalQuestions = () => {
+  return Object.keys(stateInfo).map((id) => ({
+    type: "capital",
+    value: id,
+    text: `Which state has the capital ${stateInfo[id].capital}?`,
+    count: 1
+  }));
+};
+
+const shuffleArray = (array) =>
+  array
     .map((value) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
-};
 
 export default function App() {
   const [selectedState, setSelectedState] = useState({
@@ -33,26 +48,39 @@ export default function App() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
 
+  // Setup questions on load/reset
   useEffect(() => {
-    setShuffledQuestions(shuffleArray(questionTypes));
+    const allQuestions = [...baseQuestions, ...getCapitalQuestions()];
+    setShuffledQuestions(shuffleArray(allQuestions));
   }, []);
 
   const currentQuestion = shuffledQuestions[questionIndex];
 
   const getCorrectStates = () => {
-    return Object.keys(stateInfo).filter((id) => {
-      const state = stateInfo[id];
-      if (!state) return false;
-      if (currentQuestion?.type === "gangaFlow") return state.gangaFlow;
-      return state.region === currentQuestion?.value;
-    });
+    if (!currentQuestion) return [];
+    switch (currentQuestion.type) {
+      case "gangaFlow":
+        return Object.keys(stateInfo).filter((id) => stateInfo[id].gangaFlow);
+      case "region":
+        return Object.keys(stateInfo).filter(
+          (id) => stateInfo[id].region === currentQuestion.value
+        );
+      case "unionTerritory":
+        return Object.keys(stateInfo).filter((id) => stateInfo[id].isUnionTerritory);
+      case "capital":
+        return [currentQuestion.value]; 
+      default:
+        return [];
+    }
   };
 
   const correctStates = getCorrectStates();
 
   const handleStatePress = (stateId, event) => {
     if (!stateInfo[stateId]) return;
+
     const state = stateInfo[stateId];
+    const isCorrect = correctStates.includes(stateId);
 
     setSelectedState({
       id: stateId,
@@ -63,11 +91,6 @@ export default function App() {
       }
     });
 
-    const isCorrect =
-      currentQuestion?.type === "gangaFlow"
-        ? state.gangaFlow
-        : state.region === currentQuestion?.value;
-
     if (isCorrect) {
       if (!selectedStates.includes(stateId)) {
         const updated = [...selectedStates, stateId];
@@ -76,17 +99,16 @@ export default function App() {
 
         if (updated.length === currentQuestion.count) {
           setScore((prev) => prev + 1);
-          setSelectedStates([]);
-
           setTimeout(() => {
             const nextIndex = questionIndex + 1;
             if (nextIndex < shuffledQuestions.length) {
               setQuestionIndex(nextIndex);
             } else {
-              // Reshuffle and restart if all questions are done
-              setShuffledQuestions(shuffleArray(questionTypes));
+              const allQ = [...baseQuestions, ...getCapitalQuestions()];
+              setShuffledQuestions(shuffleArray(allQ));
               setQuestionIndex(0);
             }
+            setSelectedStates([]);
           }, 1000);
         }
       } else {
@@ -106,7 +128,8 @@ export default function App() {
     setScore(0);
     setSelectedStates([]);
     setQuestionIndex(0);
-    setShuffledQuestions(shuffleArray(questionTypes));
+    const allQ = [...baseQuestions, ...getCapitalQuestions()];
+    setShuffledQuestions(shuffleArray(allQ));
   };
 
   return (
