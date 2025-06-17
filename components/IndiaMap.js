@@ -13,7 +13,7 @@ const IndiaMap = ({ onStatePress, selectedStateId,stateInfo, event }, props) => 
   
 
 
-  <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900"
+  <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 900"
     width="100%"
     height="100%"
     pointerEvents="box-none"
@@ -174,6 +174,11 @@ const IndiaMap = ({ onStatePress, selectedStateId,stateInfo, event }, props) => 
       onPress={(event) => onStatePress("IN-LD",event)}
         fill={selectedStateId === "IN-LD" ? highlightColor : stateInfo["IN-LD"].color}
         fillOpacity={!selectedStateId || selectedStateId === "IN-LD" ? 1 : 0.2}
+      
+      stroke="#f00"
+      strokeWidth={3}
+
+
     />
     <Path
       id="IN-MH"
