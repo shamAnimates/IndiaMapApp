@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Pressable } from "react-native";
+import { View, StyleSheet, Text, Pressable, TextInput } from "react-native";
 import IndiaMap from "./components/IndiaMap";
 import stateInfo from "./data/stateInfo.json";
 
@@ -18,7 +18,6 @@ const baseQuestions = [
     count: Object.keys(stateInfo).filter((id) => stateInfo[id].isUnionTerritory).length
   }
 ];
-
 
 const getCapitalQuestions = () => {
   return Object.keys(stateInfo).map((id) => ({
@@ -47,8 +46,8 @@ export default function App() {
   const [selectedStates, setSelectedStates] = useState([]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
+  const [questionCode, setQuestionCode] = useState("");
 
-  // Setup questions on load/reset
   useEffect(() => {
     const allQuestions = [...baseQuestions, ...getCapitalQuestions()];
     setShuffledQuestions(shuffleArray(allQuestions));
@@ -68,7 +67,7 @@ export default function App() {
       case "unionTerritory":
         return Object.keys(stateInfo).filter((id) => stateInfo[id].isUnionTerritory);
       case "capital":
-        return [currentQuestion.value]; 
+        return [currentQuestion.value];
       default:
         return [];
     }
@@ -132,6 +131,28 @@ export default function App() {
     setShuffledQuestions(shuffleArray(allQ));
   };
 
+  const handleCodeSubmit = () => {
+    const code = questionCode.trim();
+
+    let newQuestionList = [];
+
+    if (code === "00") {
+      newQuestionList = baseQuestions.filter((q) => q.type === "gangaFlow");
+    } else if (code === "01") {
+      newQuestionList = baseQuestions.filter((q) => q.type === "region");
+    } else if (code === "02") {
+      newQuestionList = getCapitalQuestions();
+    } else {
+      // If invalid code, reshuffle full list
+      newQuestionList = [...baseQuestions, ...getCapitalQuestions()];
+    }
+
+    setShuffledQuestions(shuffleArray(newQuestionList));
+    setQuestionIndex(0);
+    setSelectedStates([]);
+    setQuestionCode("");
+  };
+
   return (
     <View style={styles.container}>
       <IndiaMap
@@ -163,9 +184,25 @@ export default function App() {
 
       <View style={styles.scoreBox}>
         <Text style={styles.scoreText}>Score: {score}</Text>
-        <Pressable style={styles.resetButton} onPress={handleReset}>
-          <Text style={styles.resetText}>Reset</Text>
-        </Pressable>
+        <View style={styles.rightControls}>
+          <Pressable style={styles.resetButton} onPress={handleReset}>
+            <Text style={styles.resetText}>Reset</Text>
+          </Pressable>
+          <View style={styles.inputRow}>
+            <TextInput
+              style={styles.codeInput}
+              placeholder="Enter code"
+              placeholderTextColor="#ccc"
+              value={questionCode}
+              onChangeText={setQuestionCode}
+              keyboardType="number-pad"
+              maxLength={2}
+            />
+            <Pressable style={styles.submitButton} onPress={handleCodeSubmit}>
+              <Text style={styles.resetText}>Go</Text>
+            </Pressable>
+          </View>
+        </View>
       </View>
 
       {feedback && (
@@ -227,17 +264,41 @@ const styles = StyleSheet.create({
     right: 20,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "flex-start"
   },
   scoreText: {
     fontSize: 16,
     fontWeight: "bold"
+  },
+  rightControls: {
+    alignItems: "flex-end"
   },
   resetButton: {
     backgroundColor: "#007AFF",
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 8
+  },
+  inputRow: {
+    marginTop: 8,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  codeInput: {
+    borderWidth: 1,
+    borderColor: "#007AFF",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    width: 100,
+    color: "#000"
+  },
+  submitButton: {
+    backgroundColor: "#007AFF",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+    marginLeft: 6
   },
   resetText: {
     color: "white",
