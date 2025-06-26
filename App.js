@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Pressable, TextInput } from "react-native";
-import IndiaMap from "./components/IndiaMap";
+import IndiaMap from "./components/IndiaMapZoomable2";
 import stateInfo from "./data/stateInfo.json";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 
 // Static question types (multi-answer)
 const baseQuestions = [
@@ -154,6 +156,7 @@ export default function App() {
   };
 
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
     <View style={styles.container}>
       <IndiaMap
         onStatePress={handleStatePress}
@@ -222,6 +225,7 @@ export default function App() {
         />
       )}
     </View>
+    </GestureHandlerRootView>
   );
 }
 
