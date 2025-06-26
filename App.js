@@ -319,4 +319,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     opacity: 0.8
   }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8

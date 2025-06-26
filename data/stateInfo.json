@@ -6,28 +6,44 @@
     "info": "An Indian archipelago in the Bay of Bengal.",
     "color": "#4DC3FF",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "null",
     "isUnionTerritory": true
+=======
+    "region": "South"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-AP": {
     "name": "Andhra Pradesh",
     "capital": "Amaravati (de facto), Visakhapatnam (executive)",
     "population": "53,903,393",
     "info": "Located on the southeastern coast of India...",
+<<<<<<< HEAD
     "color": "#525B88",
     "gangaFlow": false,
     "region": "South",
     "isUnionTerritory": false
+=======
+    "color": "#FFAA00",
+    "gangaFlow": false,
+    "region": "South"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-AR": {
     "name": "Arunachal Pradesh",
     "capital": "Itanagar",
     "population": "1,383,727",
     "info": "A northeastern state of India...",
+<<<<<<< HEAD
     "color": "#FFA500",
     "gangaFlow": false,
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "color": "#228B22",
+    "gangaFlow": false,
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-AS": {
     "name": "Assam",
@@ -36,8 +52,12 @@
     "info": "Located in northeastern India...",
     "color": "#A0522D",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-BR": {
     "name": "Bihar",
@@ -46,8 +66,12 @@
     "info": "Situated in eastern India...",
     "color": "#DAA520",
     "gangaFlow": true,
+<<<<<<< HEAD
     "region": "East",
     "isUnionTerritory": false
+=======
+    "region": "East"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-CH": {
     "name": "Chandigarh",
@@ -56,8 +80,12 @@
     "info": "A union territory...",
     "color": "#7B68EE",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "null",
     "isUnionTerritory": true
+=======
+    "region": "null"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-CT": {
     "name": "Chhattisgarh",
@@ -66,8 +94,12 @@
     "info": "Located in central India...",
     "color": "#0000FF",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Central",
     "isUnionTerritory": false
+=======
+    "region": "Central"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-DD": {
     "name": "Dadra and Nagar Haveli and Daman and Diu",
@@ -76,8 +108,12 @@
     "info": "A union territory formed by the merger...",
     "color": "#8FBC8F",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "null",
     "isUnionTerritory": true
+=======
+    "region": "null"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-DL": {
     "name": "Delhi",
@@ -86,8 +122,12 @@
     "info": "India's national capital territory...",
     "color": "#C71585",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "North",
     "isUnionTerritory": true
+=======
+    "region": "North"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-GA": {
     "name": "Goa",
@@ -96,8 +136,12 @@
     "info": "India's smallest state by area...",
     "color": "#FF6347",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "West",
     "isUnionTerritory": false
+=======
+    "region": "West"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-GJ": {
     "name": "Gujarat",
@@ -106,8 +150,12 @@
     "info": "Located on the western coast...",
     "color": "#FFD700",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "West",
     "isUnionTerritory": false
+=======
+    "region": "West"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-HP": {
     "name": "Himachal Pradesh",
@@ -116,8 +164,12 @@
     "info": "A mountainous state in northern India...",
     "color": "#40E0D0",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "North",
     "isUnionTerritory": false
+=======
+    "region": "North"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-HR": {
     "name": "Haryana",
@@ -126,8 +178,12 @@
     "info": "Located in northern India...",
     "color": "#00CED1",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "North",
     "isUnionTerritory": false
+=======
+    "region": "North"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-JH": {
     "name": "Jharkhand",
@@ -136,8 +192,12 @@
     "info": "Formed in 2000, Jharkhand is located in eastern India...",
     "color": "#A52A2A",
     "gangaFlow": true,
+<<<<<<< HEAD
     "region": "East",
     "isUnionTerritory": false
+=======
+    "region": "East"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-JK": {
     "name": "Jammu and Kashmir",
@@ -146,8 +206,12 @@
     "info": "A union territory in northern India...",
     "color": "#8B0000",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "North",
     "isUnionTerritory": false
+=======
+    "region": "North"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-KA": {
     "name": "Karnataka",
@@ -156,8 +220,12 @@
     "info": "Located in southern India...",
     "color": "#00008B",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "South",
     "isUnionTerritory": false
+=======
+    "region": "South"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-KL": {
     "name": "Kerala",
@@ -166,8 +234,12 @@
     "info": "Situated on the southwestern coast of India...",
     "color": "#006400",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "South",
     "isUnionTerritory": false
+=======
+    "region": "South"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-LA": {
     "name": "Ladakh",
@@ -176,18 +248,29 @@
     "info": "Carved out of Jammu and Kashmir in 2019...",
     "color": "#D2691E",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "null",
     "isUnionTerritory": false
+=======
+    "region": "null"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-LD": {
     "name": "Lakshadweep",
     "capital": "Kavaratti",
     "population": "64,429",
+<<<<<<< HEAD
     "info": "India's smallest union territory by population...",
     "color": "#000000",
     "gangaFlow": false,
     "region": "null",
     "isUnionTerritory": true
+=======
+    "info": "India’s smallest union territory by population...",
+    "color": "#20B2AA",
+    "gangaFlow": false,
+    "region": "null"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-MH": {
     "name": "Maharashtra",
@@ -196,8 +279,12 @@
     "info": "Located in western India...",
     "color": "#FF8C00",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "West",
     "isUnionTerritory": false
+=======
+    "region": "West"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-ML": {
     "name": "Meghalaya",
@@ -206,8 +293,12 @@
     "info": "A northeastern state of India...",
     "color": "#6A5ACD",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-MN": {
     "name": "Manipur",
@@ -216,8 +307,12 @@
     "info": "Situated in northeastern India...",
     "color": "#8A2BE2",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-MP": {
     "name": "Madhya Pradesh",
@@ -226,8 +321,12 @@
     "info": "Located in the heart of India...",
     "color": "#2E8B57",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Central",
     "isUnionTerritory": false
+=======
+    "region": "Central"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-MZ": {
     "name": "Mizoram",
@@ -236,28 +335,44 @@
     "info": "Located in northeastern India...",
     "color": "#FF69B4",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-NL": {
     "name": "Nagaland",
     "capital": "Kohima",
     "population": "2,120,000",
     "info": "Nagaland is a northeastern state...",
+<<<<<<< HEAD
     "color": "#FFFF00",
     "gangaFlow": false,
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "color": "#9932CC",
+    "gangaFlow": false,
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-OR": {
     "name": "Odisha",
     "capital": "Bhubaneswar",
     "population": "46,495,053",
     "info": "Located on the eastern coast of India...",
+<<<<<<< HEAD
     "color": "#DFF5CE",
     "gangaFlow": false,
     "region": "East",
     "isUnionTerritory": false
+=======
+    "color": "#B22222",
+    "gangaFlow": false,
+    "region": "East"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-PB": {
     "name": "Punjab",
@@ -266,8 +381,12 @@
     "info": "Located in northwestern India...",
     "color": "#ADFF2F",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "North",
     "isUnionTerritory": false
+=======
+    "region": "North"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-PY": {
     "name": "Puducherry",
@@ -276,8 +395,12 @@
     "info": "A union territory of India consisting of four small unconnected districts...",
     "color": "#FF1493",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "null",
     "isUnionTerritory": true
+=======
+    "region": "South"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-RJ": {
     "name": "Rajasthan",
@@ -286,8 +409,12 @@
     "info": "The largest state in India by area...",
     "color": "#FFA500",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "West",
     "isUnionTerritory": false
+=======
+    "region": "West"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-SK": {
     "name": "Sikkim",
@@ -296,18 +423,29 @@
     "info": "A small Himalayan state in northeastern India...",
     "color": "#7FFFD4",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-TG": {
     "name": "Telangana",
     "capital": "Hyderabad",
     "population": "39,362,732",
+<<<<<<< HEAD
     "info": "Formed in 2014, Telangana is India\u2019s youngest state...",
     "color": "#BA55D3",
     "gangaFlow": false,
     "region": "South",
     "isUnionTerritory": false
+=======
+    "info": "Formed in 2014, Telangana is India’s youngest state...",
+    "color": "#BA55D3",
+    "gangaFlow": false,
+    "region": "South"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-TN": {
     "name": "Tamil Nadu",
@@ -316,8 +454,12 @@
     "info": "Famous for its Dravidian-style Hindu temples.",
     "color": "#DC143C",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "South",
     "isUnionTerritory": false
+=======
+    "region": "South"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-TR": {
     "name": "Tripura",
@@ -326,18 +468,29 @@
     "info": "Situated in northeastern India...",
     "color": "#708090",
     "gangaFlow": false,
+<<<<<<< HEAD
     "region": "Northeast",
     "isUnionTerritory": false
+=======
+    "region": "Northeast"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-UP": {
     "name": "Uttar Pradesh",
     "capital": "Lucknow",
     "population": "241,066,874",
+<<<<<<< HEAD
     "info": "India\u2019s most populous state...",
     "color": "#191970",
     "gangaFlow": true,
     "region": "North",
     "isUnionTerritory": false
+=======
+    "info": "India’s most populous state...",
+    "color": "#191970",
+    "gangaFlow": true,
+    "region": "North"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-UT": {
     "name": "Uttarakhand",
@@ -346,8 +499,12 @@
     "info": "Nestled in the Himalayas...",
     "color": "#2F4F4F",
     "gangaFlow": true,
+<<<<<<< HEAD
     "region": "North",
     "isUnionTerritory": false
+=======
+    "region": "North"
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
   },
   "IN-WB": {
     "name": "West Bengal",
@@ -356,7 +513,13 @@
     "info": "Located in eastern India...",
     "color": "#BC8F8F",
     "gangaFlow": true,
+<<<<<<< HEAD
     "region": "East",
     "isUnionTerritory": false
   }
 }
+=======
+    "region": "East"
+  }
+}
+>>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
