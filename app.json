@@ -12,6 +12,10 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": [
+      "**/*",
+      "assets/**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -21,15 +25,40 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.sham_animates.IndiaMapApp"
+      "package": "com.sham_animates.IndiaMapApp",
+      "permissions": [
+        "AUDIO_PLAYBACK",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "413c824f-d6af-4ae4-9ea1-5c66396c9ff0"
+        "projectId": "80c0434f-5fca-41d2-9088-51b3c72c9140"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 24,
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35
+          }
+        }
+      ]
+    ],
+    "owner": "shamanimates123"
   }
 }

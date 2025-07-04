@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Pressable, TextInput } from "react-native";
+import { SafeAreaView, View, StyleSheet, Text, Pressable, TextInput } from "react-native";
 import IndiaMap from "./components/IndiaMapZoomable2";
 import stateInfo from "./data/stateInfo.json";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-
-// Static question types (multi-answer)
 const baseQuestions = [
   { type: "gangaFlow", text: "Tap all states through which the Ganga river flows", count: 5 },
   { type: "region", value: "North", text: "Tap all North states", count: 9 },
@@ -37,12 +35,8 @@ const shuffleArray = (array) =>
     .map(({ value }) => value);
 
 export default function App() {
-  const [selectedState, setSelectedState] = useState({
-    id: null,
-    name: "",
-    position: { x: 0, y: 0 }
-  });
-
+  const [mode, setMode] = useState("quiz");
+  const [selectedState, setSelectedState] = useState({ id: null, name: "", position: { x: 0, y: 0 } });
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState(null);
   const [selectedStates, setSelectedStates] = useState([]);
@@ -63,9 +57,7 @@ export default function App() {
       case "gangaFlow":
         return Object.keys(stateInfo).filter((id) => stateInfo[id].gangaFlow);
       case "region":
-        return Object.keys(stateInfo).filter(
-          (id) => stateInfo[id].region === currentQuestion.value
-        );
+        return Object.keys(stateInfo).filter((id) => stateInfo[id].region === currentQuestion.value);
       case "unionTerritory":
         return Object.keys(stateInfo).filter((id) => stateInfo[id].isUnionTerritory);
       case "capital":
@@ -78,7 +70,7 @@ export default function App() {
   const correctStates = getCorrectStates();
 
   const handleStatePress = (stateId, event) => {
-    if (!stateInfo[stateId]) return;
+    if (mode !== "quiz" || !stateInfo[stateId]) return;
 
     const state = stateInfo[stateId];
     const isCorrect = correctStates.includes(stateId);
@@ -137,7 +129,6 @@ export default function App() {
     const code = questionCode.trim();
 
     let newQuestionList = [];
-
     if (code === "00") {
       newQuestionList = baseQuestions.filter((q) => q.type === "gangaFlow");
     } else if (code === "01") {
@@ -145,7 +136,6 @@ export default function App() {
     } else if (code === "02") {
       newQuestionList = getCapitalQuestions();
     } else {
-      // If invalid code, reshuffle full list
       newQuestionList = [...baseQuestions, ...getCapitalQuestions()];
     }
 
@@ -157,84 +147,79 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-    <View style={styles.container}>
-      <IndiaMap
-        onStatePress={handleStatePress}
-        selectedStateId={selectedState.id}
-        stateInfo={stateInfo}
-      />
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={styles.container}>
+          <IndiaMap
+            onStatePress={handleStatePress}
+            selectedStateId={selectedState.id}
+            stateInfo={stateInfo}
+            mode={mode}
+          />
 
-      {selectedState.id && (
-        <View
-          style={[
-            styles.labelContainer,
-            {
-              left: selectedState.position.x - 50,
-              top: selectedState.position.y - 30
-            }
-          ]}
-          pointerEvents="none"
-        >
-          <Text style={styles.labelText}>{selectedState.name}</Text>
-        </View>
-      )}
+          {mode === "quiz" && selectedState.id && (
+            <View style={[styles.labelContainer, { left: selectedState.position.x - 50, top: selectedState.position.y - 30 }]} pointerEvents="none">
+              <Text style={styles.labelText}>{selectedState.name}</Text>
+            </View>
+          )}
 
-      <View style={styles.quizBox} pointerEvents="none">
-        <Text style={styles.quizText}>
-          {currentQuestion ? currentQuestion.text : ""}
-        </Text>
-      </View>
+          {mode === "quiz" && (
+            <>
+              <View style={styles.quizBox} pointerEvents="none">
+                <Text style={styles.quizText}>
+                  {currentQuestion ? currentQuestion.text : ""}
+                </Text>
+              </View>
 
-      <View style={styles.scoreBox}>
-        <Text style={styles.scoreText}>Score: {score}</Text>
-        <View style={styles.rightControls}>
-          <Pressable style={styles.resetButton} onPress={handleReset}>
-            <Text style={styles.resetText}>Reset</Text>
-          </Pressable>
-          <View style={styles.inputRow}>
-            <TextInput
-              style={styles.codeInput}
-              placeholder="Enter code"
-              placeholderTextColor="#ccc"
-              value={questionCode}
-              onChangeText={setQuestionCode}
-              keyboardType="number-pad"
-              maxLength={2}
-            />
-            <Pressable style={styles.submitButton} onPress={handleCodeSubmit}>
-              <Text style={styles.resetText}>Go</Text>
+              <View style={styles.scoreBox}>
+                <Text style={styles.scoreText}>Score: {score}</Text>
+                <View style={styles.rightControls}>
+                  <Pressable style={styles.resetButton} onPress={handleReset}>
+                    <Text style={styles.resetText}>Reset</Text>
+                  </Pressable>
+                  <View style={styles.inputRow}>
+                    <TextInput
+                      style={styles.codeInput}
+                      placeholder="Enter code"
+                      placeholderTextColor="#ccc"
+                      value={questionCode}
+                      onChangeText={setQuestionCode}
+                      keyboardType="number-pad"
+                      maxLength={2}
+                    />
+                    <Pressable style={styles.submitButton} onPress={handleCodeSubmit}>
+                      <Text style={styles.resetText}>Go</Text>
+                    </Pressable>
+                  </View>
+                </View>
+              </View>
+
+              {feedback && (
+                <View style={[styles.feedbackLight, {
+                  backgroundColor:
+                    feedback === "correct" ? "green" :
+                    feedback === "wrong" ? "red" : "orange"
+                }]} pointerEvents="none" />
+              )}
+            </>
+          )}
+
+          {/* ✅ Mode buttons at the bottom */}
+          <View style={styles.bottomBar}>
+            <Pressable style={[styles.modeButton, mode === "quiz" && styles.activeMode]} onPress={() => setMode("quiz")}>
+              <Text style={styles.modeButtonText}>Quiz Mode</Text>
+            </Pressable>
+            <Pressable style={[styles.modeButton, mode === "play" && styles.activeMode]} onPress={() => setMode("play")}>
+              <Text style={styles.modeButtonText}>Play Mode</Text>
             </Pressable>
           </View>
         </View>
-      </View>
-
-      {feedback && (
-        <View
-          style={[
-            styles.feedbackLight,
-            {
-              backgroundColor:
-                feedback === "correct"
-                  ? "green"
-                  : feedback === "wrong"
-                  ? "red"
-                  : "orange"
-            }
-          ]}
-          pointerEvents="none"
-        />
-      )}
-    </View>
+      </SafeAreaView>
     </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    position: "relative",
-    backgroundColor: "#fff"
-  },
+  container: { flex: 1, position: "relative", backgroundColor: "#fff" },
   labelContainer: {
     position: "absolute",
     backgroundColor: "rgba(0,0,0,0.7)",
@@ -244,23 +229,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  labelText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold"
-  },
-  quizBox: {
-    position: "absolute",
-    top: 40,
-    left: 20,
-    right: 20,
-    alignItems: "center"
-  },
-  quizText: {
-    fontSize: 18,
-    fontWeight: "600",
-    textAlign: "center"
-  },
+  labelText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
+  quizBox: { position: "absolute", top: 40, left: 20, right: 20, alignItems: "center" },
+  quizText: { fontSize: 18, fontWeight: "600", textAlign: "center" },
   scoreBox: {
     position: "absolute",
     top: 80,
@@ -270,13 +241,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start"
   },
-  scoreText: {
-    fontSize: 16,
-    fontWeight: "bold"
-  },
-  rightControls: {
-    alignItems: "flex-end"
-  },
+  scoreText: { fontSize: 16, fontWeight: "bold" },
+  rightControls: { alignItems: "flex-end" },
   resetButton: {
     backgroundColor: "#007AFF",
     paddingHorizontal: 12,
@@ -304,23 +270,42 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginLeft: 6
   },
-  resetText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 14
-  },
+  resetText: { color: "white", fontWeight: "bold", fontSize: 14 },
   feedbackLight: {
     position: "absolute",
-    bottom: 30,
+    bottom: 80,
     left: "50%",
     transform: [{ translateX: -25 }],
     width: 50,
     height: 50,
     borderRadius: 25,
     opacity: 0.8
+  },
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 12,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+    zIndex: 10
+  },
+  modeButton: {
+    backgroundColor: '#ccc',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+    marginBottom: 40
+  },
+  activeMode: {
+    backgroundColor: '#007AFF'
+  },
+  modeButtonText: {
+    color: 'white',
+    fontWeight: 'bold'
   }
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> d913f45e267ec898df6cbd9346111f62ae16a7b8
