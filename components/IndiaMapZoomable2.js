@@ -14,10 +14,12 @@ import audioMap from '../data/audioMap';
 const AnimatedPath = Animated.createAnimatedComponent(Path);
 const highlightColor = '#66ff00';
 
-const IndiaMap = ({ onStatePress, selectedStateId, mode, ...props }) => {
-  const scale = useSharedValue(1);
-  const translateX = useSharedValue(0);
-  const translateY = useSharedValue(0);
+const IndiaMap = ({ onStatePress, selectedStateId, mode, scale,
+  translateX,
+  translateY, ...props }) => {
+  // const scale = useSharedValue(1);
+  // const translateX = useSharedValue(0);
+  // const translateY = useSharedValue(0);
   const focalX = useSharedValue(0);
   const focalY = useSharedValue(0);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });

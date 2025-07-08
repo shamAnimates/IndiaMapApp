@@ -58,7 +58,7 @@
     "capital": "Raipur",
     "population": "29,436,231",
     "info": "Located in central India...",
-    "color": "#0000FF",
+    "color": "#4194cb",
     "gangaFlow": false,
     "region": "Central"
   },
@@ -143,7 +143,7 @@
     "capital": "Bengaluru",
     "population": "68,479,970",
     "info": "Located in southern India...",
-    "color": "#00008B",
+    "color": "#3271a5",
     "gangaFlow": false,
     "region": "South"
   },
@@ -233,7 +233,7 @@
     "capital": "Bhubaneswar",
     "population": "46,495,053",
     "info": "Located on the eastern coast of India...",
-    "color": "#B22222",
+    "color": "#2eb774",
     "gangaFlow": false,
     "region": "East"
   },
@@ -251,7 +251,7 @@
     "capital": "Puducherry",
     "population": "1,394,467",
     "info": "A union territory of India consisting of four small unconnected districts...",
-    "color": "#FF1493",
+    "color": "#95bb72",
     "gangaFlow": false,
     "region": "South"
   },
@@ -305,7 +305,7 @@
     "capital": "Lucknow",
     "population": "241,066,874",
     "info": "India’s most populous state...",
-    "color": "#191970",
+    "color": "#ffc067",
     "gangaFlow": true,
     "region": "North"
   },

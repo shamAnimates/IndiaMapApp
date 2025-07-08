@@ -3,6 +3,11 @@ import { SafeAreaView, View, StyleSheet, Text, Pressable, TextInput } from "reac
 import IndiaMap from "./components/IndiaMapZoomable2";
 import stateInfo from "./data/stateInfo.json";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+//import StateLabels from './components/StateLabels';
+
+import { useSharedValue } from 'react-native-reanimated';
+import StateLabelOverlay from './components/StateLabelOverlay';
+
 
 const baseQuestions = [
   { type: "gangaFlow", text: "Tap all states through which the Ganga river flows", count: 5 },
@@ -145,6 +150,11 @@ export default function App() {
     setQuestionCode("");
   };
 
+  const scale = useSharedValue(1);
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -154,7 +164,17 @@ export default function App() {
             selectedStateId={selectedState.id}
             stateInfo={stateInfo}
             mode={mode}
+            
+          scale={scale}
+          translateX={translateX}
+          translateY={translateY}
           />
+          <StateLabelOverlay
+  scale={scale}
+  translateX={translateX}
+  translateY={translateY}
+/>
+
 
           {mode === "quiz" && selectedState.id && (
             <View style={[styles.labelContainer, { left: selectedState.position.x - 50, top: selectedState.position.y - 30 }]} pointerEvents="none">
