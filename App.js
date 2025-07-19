@@ -3,11 +3,9 @@ import { SafeAreaView, View, StyleSheet, Text, Pressable, TextInput } from "reac
 import IndiaMap from "./components/IndiaMapZoomable2";
 import stateInfo from "./data/stateInfo.json";
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-//import StateLabels from './components/StateLabels';
-
 import { useSharedValue } from 'react-native-reanimated';
 import StateLabelOverlay from './components/StateLabelOverlay';
-
+import MapTextOverlay from "./components/MapTextOverlay";
 
 const baseQuestions = [
   { type: "gangaFlow", text: "Tap all states through which the Ganga river flows", count: 5 },
@@ -33,6 +31,114 @@ const getCapitalQuestions = () => {
   }));
 };
 
+// ✅ NEW QUESTION SETS
+const templeQuestions = [
+  { type: "temple", text: "Where is the Golden Temple located?", answer: "Punjab", count: 1 },
+  { type: "temple", text: "Where is the Mata Vaishnodevi temple located?", answer: "Jammu and Kashmir", count: 1 },
+  { type: "temple", text: "Where is the Jagannath Temple located?", answer: "Odisha", count: 1 },
+  { type: "temple", text: "Where is the Kashi Vishwanath Temple located?", answer: "Uttar Pradesh", count: 1 },
+  { type: "temple", text: "Where is the Tirupati Temple located?", answer: "Andhra Pradesh", count: 1 },
+  { type: "temple", text: "Where is the Somnath Temple located?", answer: "Gujarat", count: 1 }
+];
+
+const riverQuestions = [
+  { type: "river", text: "Which river flows through Assam?", answer: "Assam", count: 1 },
+  { type: "river", text: "Which river flows through Gujarat?", answer: "Gujarat", count: 1 },
+  { type: "river", text: "Which river is the most sacred in India?", answer: "Ganga", count: 1 },
+  { type: "river", text: "Which river flows beside Delhi?", answer: "Delhi", count: 1 },
+  { type: "river", text: "Which river flows beside Delhi?", answer: "Delhi", count: 1 }
+];
+
+const damQuestions = [
+  { type: "dam", text: "Where is the Bhakra Nangal Dam located?", answer: "Himachal Pradesh", count: 1 },
+  { type: "dam", text: "Where is the Tehri Dam located?", answer: "Uttarakhand", count: 1 },
+  { type: "dam", text: "Which UT has the Cellular Jail?", answer: "Andaman and Nicobar Islands", count: 1 }
+];
+
+const mountainsQuestions = [
+  { type: "mountains", text: "Where is Darjeeling located?", answer: "West Bengal", count: 1 },
+  { type: "mountains", text: "Which state has the Aravalli Range?", answer: "Rajasthan", count: 1 },
+  { type: "mountains", text: "Where are the Shivalik Hills located?", answer: "Himachal Pradesh", count: 1 },
+  { type: "mountains", text: "Which state has the Himalaya Range?", answer: "Uttarakhand", count: 1 }
+];
+
+const monumentsQuestions = [
+  { type: "monuments", text: "Where is Gir National Park located?", answer: "Gujarat", count: 1 },
+  { type: "monuments", text: "Where is Charankar Solar Park located?", answer: "Gujarat", count: 1 },
+  { type: "monuments", text: "Where is the Jaisalmer Solar Park located?", answer: "Rajasthan", count: 1 }
+];
+
+
+const agricultureQuestions = [
+  { type: "agriculture", text: "Which state is the largest wheat producer?", answer: "Punjab", count: 1 },
+  { type: "agriculture", text: "Which state is the largest sugarcane producer?", answer: "Uttar Pradesh", count: 1 },
+  { type: "agriculture", text: "Which state is the largest tea producer?", answer: "Assam", count: 1 },
+  { type: "agriculture", text: "Which state is the largest coffee producer?", answer: "Karnataka", count: 1 }
+];
+
+
+const lakeQuestions = [
+  { type: "lake", text: "Where is Dal Lake located?", answer: "Jammu and Kashmir", count: 1 },
+  { type: "lake", text: "Where is Chandigarh Lake located?", answer: "Chandigarh", count: 1 },
+  { type: "lake", text: "Where is Hyderabad Lake located?", answer: "Telangana", count: 1 }
+];
+
+
+const naturalResourcesQuestions = [
+  { type: "naturalResources", text: "Where is a gold mine located in India?", answer: "Karnataka", count: 1 },
+  { type: "naturalResources", text: "Where is the Panna diamond mine located?", answer: "Madhya Pradesh", count: 1 }
+];
+
+const airportQuestions = [
+  { type: "airport", text: "Where is IGI Airport located?", answer: "Delhi", count: 1 }
+];
+
+const seaportQuestions = [
+  { type: "seaport", text: "Where is Kandla Port located?", answer: "Gujarat", count: 1 }
+];
+
+const islandsQuestions = [
+  { type: "islands", text: "Which UT has its capital at Port Blair?", answer: "Andaman and Nicobar Islands", count: 1 },
+  { type: "islands", text: "Where is Lakshadweep Island located?", answer: "Lakshadweep", count: 1 },
+  { type: "islands", text: "Where is the Cellular Jail located?", answer: "Andaman and Nicobar Islands", count: 1 }
+];
+
+
+const importantPlacesQuestions = [
+  { type: "importantPlaces", text: "Which state borders Pakistan and China?", answer: "Ladakh", count: 1 },
+  { type: "importantPlaces", text: "Where is the Atal Tunnel located?", answer: "Himachal Pradesh", count: 1 },
+  { type: "importantPlaces", text: "Where is Gir National Park located?", answer: "Gujarat", count: 1 },
+  { type: "importantPlaces", text: "Where are the Ajanta Caves located?", answer: "Maharashtra", count: 1 },
+  { type: "importantPlaces", text: "Which is the most populous state in India?", answer: "Uttar Pradesh", count: 1 },
+  { type: "importantPlaces", text: "Which state has the highest population density?", answer: "Bihar", count: 1 },
+  { type: "importantPlaces", text: "Which river flows through Assam?", answer: "Assam", count: 1 },
+  { type: "importantPlaces", text: "Where is the Periyar Tiger Reserve located?", answer: "Kerala", count: 1 },
+  { type: "importantPlaces", text: "Where is Charankar Solar Park located?", answer: "Gujarat", count: 1 },
+  { type: "importantPlaces", text: "Where is the Jaisalmer Solar Park located?", answer: "Rajasthan", count: 1 },
+  { type: "importantPlaces", text: "What is the summer capital of Himachal Pradesh?", answer: "Himachal Pradesh", count: 1 },
+  { type: "importantPlaces", text: "Where is Darjeeling located?", answer: "West Bengal", count: 1 },
+  { type: "importantPlaces", text: "Which city is called Diamond City?", answer: "Gujarat", count: 1 },
+  { type: "importantPlaces", text: "Which UT has Punjabi as official language?", answer: "Chandigarh", count: 1 },
+  { type: "importantPlaces", text: "Which city is a major IT hub?", answer: "Telangana", count: 1 },
+  { type: "importantPlaces", text: "Which city is known for IT and BPO services?", answer: "Haryana", count: 1 },
+  { type: "importantPlaces", text: "Where is the Maruti car manufacturing cluster located?", answer: "Haryana", count: 1 },
+  { type: "importantPlaces", text: "Where are Tata Motors and Tata Steel hubs?", answer: "Jharkhand", count: 1 },
+  { type: "importantPlaces", text: "Where is a nuclear power plant located?", answer: "Maharashtra", count: 1 },
+  { type: "importantPlaces", text: "Where is the earliest sunrise in India seen?", answer: "Arunachal Pradesh", count: 1 },
+  { type: "importantPlaces", text: "Where is the Chenab Bridge located?", answer: "Jammu and Kashmir", count: 1 },
+  { type: "importantPlaces", text: "Where is the centre of Bollywood?", answer: "Maharashtra", count: 1 },
+  { type: "importantPlaces", text: "Where is Ramoji Film City located?", answer: "Telangana", count: 1 },
+  { type: "importantPlaces", text: "Where is ISRO headquartered?", answer: "Karnataka", count: 1 },
+  { type: "importantPlaces", text: "Where is Hussain Sagar Lake located?", answer: "Telangana", count: 1 }
+];
+
+const miscellaneousQuestions = [
+  { type: "miscellaneous", text: "Which is the most literate state?", answer: "Kerala", count: 1 },
+  { type: "miscellaneous", text: "Where did the Green Revolution start?", answer: "Punjab", count: 1 },
+  { type: "miscellaneous", text: "Where is the highest rainfall recorded?", answer: "Meghalaya", count: 1 }
+];
+
+
 const shuffleArray = (array) =>
   array
     .map((value) => ({ value, sort: Math.random() }))
@@ -50,11 +156,32 @@ export default function App() {
   const [questionCode, setQuestionCode] = useState("");
 
   useEffect(() => {
-    const allQuestions = [...baseQuestions, ...getCapitalQuestions()];
+    const allQuestions = [
+      ...baseQuestions,
+      ...getCapitalQuestions(),
+      ...templeQuestions,
+      ...riverQuestions,
+      ...damQuestions,
+      ...mountainsQuestions,
+      ...agricultureQuestions,
+      ...lakeQuestions,
+      ...naturalResourcesQuestions,
+      ...airportQuestions,
+      ...seaportQuestions,
+      ...islandsQuestions,
+      ...importantPlacesQuestions,
+      ...miscellaneousQuestions
+    ];
     setShuffledQuestions(shuffleArray(allQuestions));
   }, []);
 
   const currentQuestion = shuffledQuestions[questionIndex];
+
+  const findStateIdByName = (name) => {
+    return Object.keys(stateInfo).find(
+      (id) => stateInfo[id].name.toLowerCase().includes(name.toLowerCase())
+    );
+  };
 
   const getCorrectStates = () => {
     if (!currentQuestion) return [];
@@ -68,21 +195,17 @@ export default function App() {
       case "capital":
         return [currentQuestion.value];
       default:
-        return [];
+        return [findStateIdByName(currentQuestion.answer)];
     }
   };
 
-  const correctStates = getCorrectStates();
-
   const handleStatePress = (stateId, event) => {
     if (mode !== "quiz" || !stateInfo[stateId]) return;
-
-    const state = stateInfo[stateId];
-    const isCorrect = correctStates.includes(stateId);
+    const isCorrect = getCorrectStates().includes(stateId);
 
     setSelectedState({
       id: stateId,
-      name: state.name,
+      name: stateInfo[stateId].name,
       position: {
         x: event.nativeEvent.locationX,
         y: event.nativeEvent.locationY
@@ -126,23 +249,49 @@ export default function App() {
     setScore(0);
     setSelectedStates([]);
     setQuestionIndex(0);
-    const allQ = [...baseQuestions, ...getCapitalQuestions()];
+    const allQ = [
+  ...baseQuestions,
+  ...getCapitalQuestions(),
+  ...templeQuestions,
+  ...riverQuestions,
+  ...damQuestions,
+  ...mountainsQuestions,
+  ...agricultureQuestions,
+  ...lakeQuestions,
+  ...naturalResourcesQuestions,
+  ...airportQuestions,
+  ...seaportQuestions,
+  ...islandsQuestions,
+  ...importantPlacesQuestions,
+  ...miscellaneousQuestions,
+  ...monumentsQuestions
+];
+
     setShuffledQuestions(shuffleArray(allQ));
   };
 
   const handleCodeSubmit = () => {
     const code = questionCode.trim();
-
     let newQuestionList = [];
-    if (code === "00") {
-      newQuestionList = baseQuestions.filter((q) => q.type === "gangaFlow");
-    } else if (code === "01") {
-      newQuestionList = baseQuestions.filter((q) => q.type === "region");
-    } else if (code === "02") {
-      newQuestionList = getCapitalQuestions();
-    } else {
-      newQuestionList = [...baseQuestions, ...getCapitalQuestions()];
-    }
+
+    if (code === "00") newQuestionList = baseQuestions.filter((q) => q.type === "gangaFlow");
+    else if (code === "01") newQuestionList = baseQuestions.filter((q) => q.type === "region");
+    else if (code === "02") newQuestionList = getCapitalQuestions();
+    else if (code === "03") newQuestionList = templeQuestions;
+    else if (code === "04") newQuestionList = riverQuestions;
+    else if (code === "05") newQuestionList = damQuestions;
+    else if (code === "06") newQuestionList = mountainsQuestions;
+    else if (code === "07") newQuestionList = agricultureQuestions;
+    else if (code === "08") newQuestionList = lakeQuestions;
+    else if (code === "09") newQuestionList = naturalResourcesQuestions;
+    else if (code === "10") newQuestionList = airportQuestions;
+    else if (code === "11") newQuestionList = seaportQuestions;
+    else if (code === "12") newQuestionList = islandsQuestions;
+    else if (code === "13") newQuestionList = importantPlacesQuestions;
+    else if (code === "14") newQuestionList = miscellaneousQuestions;
+    else if (code === "15") newQuestionList = monumentsQuestions;
+
+    else newQuestionList = [...baseQuestions, ...getCapitalQuestions()];
 
     setShuffledQuestions(shuffleArray(newQuestionList));
     setQuestionIndex(0);
@@ -154,27 +303,32 @@ export default function App() {
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
 
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={styles.container}>
+        {/* Same UI as before... */}
+        {/* Keep your entire UI rendering here unchanged. */}
+<View style={styles.container}>
           <IndiaMap
             onStatePress={handleStatePress}
             selectedStateId={selectedState.id}
             stateInfo={stateInfo}
             mode={mode}
-            
-          scale={scale}
-          translateX={translateX}
-          translateY={translateY}
+
+            scale={scale}
+            translateX={translateX}
+            translateY={translateY}
           />
           <StateLabelOverlay
-  scale={scale}
-  translateX={translateX}
-  translateY={translateY}
-/>
-
+            scale={scale}
+            translateX={translateX}
+            translateY={translateY}
+          />
+          <MapTextOverlay
+            scale={scale}
+            translateX={translateX}
+            translateY={translateY}
+          />
 
           {mode === "quiz" && selectedState.id && (
             <View style={[styles.labelContainer, { left: selectedState.position.x - 50, top: selectedState.position.y - 30 }]} pointerEvents="none">
@@ -217,7 +371,7 @@ export default function App() {
                 <View style={[styles.feedbackLight, {
                   backgroundColor:
                     feedback === "correct" ? "green" :
-                    feedback === "wrong" ? "red" : "orange"
+                      feedback === "wrong" ? "red" : "orange"
                 }]} pointerEvents="none" />
               )}
             </>
@@ -240,7 +394,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, position: "relative", backgroundColor: "#fff" },
-  labelContainer: {
+  // ... your existing styles unchanged
+ labelContainer: {
     position: "absolute",
     backgroundColor: "rgba(0,0,0,0.7)",
     padding: 12,
